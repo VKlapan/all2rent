@@ -3,15 +3,12 @@ import { ModelObjectHandler } from './modelObjectsHandler';
 
 const model = new ModelObjectHandler();
 
-console.log(model.getAllPoints());
-console.log(model.getAllAppartments());
-
 function initMap() {
-  //  const markerCluster = new MarkerClusterer({ map, markers });
+  const locations = model.getAllPoints();
 
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 16,
-    center: { lat: -28.024, lng: 140.887 },
+    center: { lat: 50.3864813, lng: 30.4610184 },
     mapTypeControl: true,
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
@@ -95,7 +92,5 @@ function initMap() {
     });
   }
 }
-
-const locations = model.getAllPoints();
 
 window.initMap = initMap;
