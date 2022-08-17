@@ -3,9 +3,30 @@ import { ModelObjectHandler } from './modelObjectsHandler';
 
 const model = new ModelObjectHandler();
 
-function initMap() {
-  const locations = model.getAllPoints();
+const locations = model.getAllPoints();
+const appartments = model.getAllAppartments();
 
+const itemsGalleryEl = document.querySelector('.item--list');
+
+const renderItemsGallery = () => {
+  return appartments
+    .map(appart => {
+      return `
+    <li class="item">
+    <img class="item--img" src="${appart.image}" alt="" />
+    <div class="item--details">
+      <h3 class="item--title">${appart.title}</h3>
+      <p class="item--description">${appart.description}</p>
+    </div>
+  </li>
+    `;
+    })
+    .join('');
+};
+
+itemsGalleryEl.innerHTML = renderItemsGallery();
+
+function initMap() {
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 16,
     center: { lat: 50.3864813, lng: 30.4610184 },
