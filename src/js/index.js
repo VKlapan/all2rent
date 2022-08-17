@@ -6,6 +6,8 @@ const model = new ModelObjectHandler();
 const locations = model.getAllPoints();
 const appartments = model.getAllAppartments();
 
+console.log(model.getAppartmentsByIdArr([2, 4, 10]));
+
 const itemsGalleryEl = document.querySelector('.item--list');
 
 const renderItemsGallery = () => {
@@ -59,19 +61,21 @@ function initMap() {
   // Create an array of alphabetical characters used to label the markers.
   const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   // Add some markers to the map.
-  const markers = locations.map((position, i) => {
-    const label = labels[i % labels.length];
+  const markers = locations.map(({ id, lat, lng }) => {
+    //    const label = labels[i % labels.length];
+    const label = id.toString();
+
     const marker = new google.maps.Marker({
-      position,
+      position: { lat, lng },
       label,
     });
 
     // markers can only be keyboard focusable when they have click listeners
     // open info window when marker is clicked
-    marker.addListener('click', () => {
-      infoWindow.setContent(label);
-      infoWindow.open(map, marker);
-      console.log('CLICK!!!');
+    marker.addListener('click', mapsMouseEvent => {
+      // infoWindow.setContent(marker.title);
+      // infoWindow.open(map, marker);
+      console.log('CLICK!!!', marker.label, mapsMouseEvent);
     });
     return marker;
   });
