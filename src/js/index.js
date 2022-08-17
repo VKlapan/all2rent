@@ -10,8 +10,8 @@ console.log(model.getAppartmentsByIdArr([2, 4, 10]));
 
 const itemsGalleryEl = document.querySelector('.item--list');
 
-const renderItemsGallery = () => {
-  return appartments
+const renderItemsGallery = appartmentsArr => {
+  return appartmentsArr
     .map(appart => {
       return `
     <li class="item">
@@ -26,9 +26,14 @@ const renderItemsGallery = () => {
     .join('');
 };
 
-itemsGalleryEl.innerHTML = renderItemsGallery();
+// itemsGalleryEl.innerHTML = renderItemsGallery(model.getAppartmentsByIdArr([2]));
 
 function initMap() {
+  let latMin = null;
+  let latMax = null;
+  let lngMin = null;
+  let lngMax = null;
+
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 16,
     center: { lat: 50.3864813, lng: 30.4610184 },
@@ -54,7 +59,18 @@ function initMap() {
   });
 
   map.addListener('bounds_changed', () => {
-    console.log(map.getBounds().toJSON());
+    latMin = map.getBounds().toJSON().south;
+    latMax = map.getBounds().toJSON().north;
+    lngMin = map.getBounds().toJSON().west;
+    lngMax = map.getBounds().toJSON().east;
+
+    const visibleArr = model.getVisiblePoints(latMin, latMax, lngMin, lngMax);
+
+    console.log('visible', visibleArr);
+
+    itemsGalleryEl.innerHTML = renderItemsGallery(
+      model.getAppartmentsByIdArr(visibleArr)
+    );
   });
 
   const infoWindow = new google.maps.InfoWindow();
