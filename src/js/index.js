@@ -29,11 +29,6 @@ const renderItemsGallery = appartmentsArr => {
 // itemsGalleryEl.innerHTML = renderItemsGallery(model.getAppartmentsByIdArr([2]));
 
 function initMap() {
-  let latMin = null;
-  let latMax = null;
-  let lngMin = null;
-  let lngMax = null;
-
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 16,
     center: { lat: 50.3864813, lng: 30.4610184 },
@@ -59,12 +54,7 @@ function initMap() {
   });
 
   map.addListener('bounds_changed', () => {
-    latMin = map.getBounds().toJSON().south;
-    latMax = map.getBounds().toJSON().north;
-    lngMin = map.getBounds().toJSON().west;
-    lngMax = map.getBounds().toJSON().east;
-
-    const visibleArr = model.getVisiblePoints(latMin, latMax, lngMin, lngMax);
+    const visibleArr = model.getVisiblePointsId(map.getBounds().toJSON());
 
     console.log('visible', visibleArr);
 
