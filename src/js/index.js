@@ -82,6 +82,8 @@ function initMap() {
       // infoWindow.setContent(marker.title);
       // infoWindow.open(map, marker);
       console.log('CLICK!!!', marker.label, map.zoom);
+      map.setZoom(16);
+      map.setCenter(marker.position);
 
       document.querySelector(`[data-id='${marker.label}']`).scrollIntoView();
     });
