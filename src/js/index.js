@@ -14,7 +14,7 @@ const renderItemsGallery = appartmentsArr => {
   return appartmentsArr
     .map(appart => {
       return `
-    <li class="item">
+    <li class="item" data-id="${appart.id}">
     <img class="item--img" src="${appart.image}" alt="" />
     <div class="item--details">
       <h3 class="item--title">${appart.title}</h3>
@@ -81,7 +81,9 @@ function initMap() {
     marker.addListener('click', mapsMouseEvent => {
       // infoWindow.setContent(marker.title);
       // infoWindow.open(map, marker);
-      console.log('CLICK!!!', marker.label, mapsMouseEvent);
+      console.log('CLICK!!!', marker.label, map.zoom);
+
+      document.querySelector(`[data-id='${marker.label}']`).scrollIntoView();
     });
     return marker;
   });

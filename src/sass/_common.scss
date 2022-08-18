@@ -68,14 +68,20 @@ header {
   width: 280px;
   height: 500px;
   overflow-x: scroll;
+  scroll-behavior: smooth;
 }
 
 .item--list {
+  display: flex;
+  flex-direction: column;
   padding: 5px;
 }
 .item {
   width: auto;
   padding: 10px;
+  &__first {
+    order: -1;
+  }
 }
 
 .item--img {
