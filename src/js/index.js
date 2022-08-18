@@ -10,6 +10,45 @@ console.log(model.getAppartmentsByIdArr([2, 4, 10]));
 
 const itemsGalleryEl = document.querySelector('.item--list');
 
+const btnAddNewAppartmentEl = document.querySelector('.header--btn');
+
+const renderFormToAddNewAppartment = () => `
+<div class="form__wrap">
+  <h3 class="form__title">Додайте новий об'єкт</h3>
+  <form class="form__body">
+    <label class="form__label">
+      <span class="form__text">Адреса</span>
+      <input class="form__field" type="text" name="title" placeholder=" " />
+    </label>
+
+    <label class="form__label">
+      <span class="form__text">Посилання на фото</span>
+      <input class="form__field" type="text" name="image" placeholder=" " />
+    </label>
+
+    <label class="form__label">
+      <span class="form__text">Опис</span>
+      <textarea
+        class="form__field form__field--textarea"
+        name="comments"
+        placeholder=" "
+        cols="30"
+        rows="10"
+      ></textarea>
+    </label>
+
+    <button class="form__button" type="submit">Додати</button>
+  </form>
+</div>
+`;
+
+const addFromToAddNewAppartment = () => {
+  console.log('ADD FORM');
+  itemsGalleryEl.innerHTML = renderFormToAddNewAppartment();
+};
+
+btnAddNewAppartmentEl.addEventListener('click', addFromToAddNewAppartment);
+
 const renderItemsGallery = appartmentsArr => {
   return appartmentsArr
     .map(appart => {
