@@ -17,7 +17,7 @@ const appartments = [
     id: 1,
     title: 'Вільямса, 9',
     image:
-      'https://pixabay.com/get/g51291aa48a74db643b36349f6032bfc25dea3f25bba60355e4defd442e46e405b1d3b0f495e33ecc7b1864bfacb2c8217c7ac7cb5e6f0b321c90c04a10a4424f_1280.jpg',
+      'https://pixabay.com/get/gf12b1d03da74eb05c5b9325b1990e7af3c9c091d07e5ab23a9e6d7b67d1bda8360d4e22e05e3f67a09a04bc57dc38ee6ac315af183684bfad421c0d6505c6720_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -25,7 +25,7 @@ const appartments = [
     id: 2,
     title: 'Ломоносова, 38',
     image:
-      'https://pixabay.com/get/ged7e7f616d828f220c9c6666002318ccf75b897ddcc9ad803300a9343877fa5b3b5f08931b68d8a26c2f5c065b08ddff55d18607106bd9f2001cb4eb7a62674d_1280.jpg',
+      'https://pixabay.com/get/g69883fb15e54c4184ee72e4af6523f00bb571de21c1ae00f547204b1aa634e6eb6fcfd2864a67a0ad94a143f4d2bf270766a1d5bbe9499cfd94a9ce27d008e3f_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -33,7 +33,7 @@ const appartments = [
     id: 3,
     title: 'Касьяна, 20',
     image:
-      'https://pixabay.com/get/gc9cccde1954d9b97920ebd140f67af8e1dc4ad303a6b6ea67ef943dc97a9eac98b52dce52df95fd3f104b6ab409565a1dfe6cde3b46d89bde682db8d665b9f2a_1280.jpg',
+      'https://pixabay.com/get/g69883fb15e54c4184ee72e4af6523f00bb571de21c1ae00f547204b1aa634e6eb6fcfd2864a67a0ad94a143f4d2bf270766a1d5bbe9499cfd94a9ce27d008e3f_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -41,7 +41,7 @@ const appartments = [
     id: 4,
     title: 'Мейтуса, 10',
     image:
-      'https://pixabay.com/get/g2f2a4f4c46a6ccd96090e4ef351b43d0049cde68388e7b9bc1c5e8d0beb5596e152eda8c559733a752ce37f8f09ed5cf34d8f9be56732af8edc7256926bf588e_1280.jpg',
+      'https://pixabay.com/get/g605facb8c5e70c47738c0490cbd328b8f135edfbb14245756e51a406838949724564525fd8c001911af27519406852ad67c1204d1e7443907d4caeb4dfefab34_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -49,7 +49,7 @@ const appartments = [
     id: 5,
     title: 'Луценка, 11',
     image:
-      'https://pixabay.com/get/g4002af7dcd43bda7197e497d12c83e75617d6645bd670d69690f83a6fa3ecabaa733e6c94a7ce3a3e672d3ad299868a0816a3961dff415fdcaec60f6b92cf2e8_1280.jpg',
+      'https://pixabay.com/get/gac90db03e45057fc013b466885d76c0d7784d98a69804396cab11a6ce1f3f3019cf9909eb92b1447f46ae5e482f4e64cf50727fa1f96ac155f7142e3ce211926_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -57,7 +57,7 @@ const appartments = [
     id: 6,
     title: 'Васильківська, 11',
     image:
-      'https://pixabay.com/get/g8432083f41e6955fce6aab7a4eb18bea3996bca75ebb7481930320bddd0002324893bdbd9a368886b198ef7e5802b529228831c420976a367e94f27ad9293cf4_1280.jpg',
+      'https://pixabay.com/get/g1772059d72ebc6876bd237da7946f8c33791f47911c16b14f915a3516ea5b5870151b769ba7de5a91f181fdc78072bc1b557ed9728ff0e1b8805f8a63fdb303e_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -65,7 +65,7 @@ const appartments = [
     id: 7,
     title: 'Васильківська, 34',
     image:
-      'https://pixabay.com/get/g83c70ad71393f4bb386026204c76feae01f1464e3959660ca9f68ec4f227964f8f1142ad0f16d2efb2938a5b6ff2d7db5e839388d9f5096400251f3d04f1c4f8_1280.jpg',
+      'https://pixabay.com/get/ga329493137db8edaf0dc453781364815bb61f46faafa549a6d1bb0033942061db0abccd8b9c5b0043450993fcb58ada2f0afe6cb274d15fbbef5352b81e87931_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -81,7 +81,7 @@ const appartments = [
     id: 9,
     title: 'Васильківська, 53',
     image:
-      'https://pixabay.com/get/g0e06e535cffb0a305a5dadd767c437749b267444942ccd5f9c8a4bf9d0a93b2b7cdc427d420bbfb948dab15aca834407291a98a996e588dca367d668c784b959_1280.jpg',
+      'https://pixabay.com/get/gb5767a80b09b312fd1f54d6c567e4f5d81e1667b2d6b2c41180442007a6ef6614db499e824cb5f67dc2afc71445f7d1e2da5259ab9fae2684680e2da15b3dcc5_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -89,7 +89,7 @@ const appartments = [
     id: 10,
     title: 'Вільямса, 11',
     image:
-      'https://pixabay.com/get/g32061f0ac408b1c126d5a9012f16662cf0f5f5241099afe0c60c5badc746fa862ba752f036a76d699031735780f3426c6ebee4c394c0efd890db3453a745c745_1280.jpg',
+      'https://pixabay.com/get/g5478b53f60d5f19c667faaac9e2311d61761bc91d73c17832f70b814d5e0dc63a983db2b004e3837f27ae851432015b0615541a4f136e3a542dc0c55727806c0_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -97,7 +97,7 @@ const appartments = [
     id: 11,
     title: 'Конєва, 10',
     image:
-      'https://pixabay.com/get/g947ac8f9923e7563cc1de679801e6dbcedceefac954c213f2ae34cd1ca459a64cb06014074bcfe62c85e05c75cad2aa97514b849e0d045bbbafce77781c307e3_1280.jpg',
+      'https://pixabay.com/get/g11372e99dce9882f8486595023808fab88294d037514776250db68103d4b6605500769194f4520fba3f29eadac62174c4a0cb3932f06749f4bd7fb29beab7692_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
