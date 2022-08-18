@@ -73,7 +73,7 @@ const appartments = [
     id: 8,
     title: 'Максимовича, 4',
     image:
-      'https://pixabay.com/get/g3d1219bc47ede121643114fab342ba3605806fcf7632dfc679b5b5031e6632fdb4ed35def8b1c329cb873d52b92fc10cbbf81b019c9d44fb3aab5cee82b86aad_1280.jpg',
+      'https://pixabay.com/get/g4a146f4b79c5ba8c6e34f416f4967d0e57f1d7aa4cb495a7b39efa63c4ca92e7e7ae229b268876ad2c7073bb82b93cf5d253b856c25ddecae5bf27802c7ca865_1280.jpg',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },

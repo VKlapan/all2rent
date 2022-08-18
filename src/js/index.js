@@ -56,7 +56,7 @@ function initMap() {
   map.addListener('bounds_changed', () => {
     const visibleArr = model.getVisiblePointsId(map.getBounds().toJSON());
 
-    console.log('visible', visibleArr);
+    //console.log('visible', visibleArr);
 
     itemsGalleryEl.innerHTML = renderItemsGallery(
       model.getAppartmentsByIdArr(visibleArr)
@@ -85,9 +85,12 @@ function initMap() {
       map.setZoom(14);
       map.setCenter(marker.position);
 
-      document
-        .querySelector(`[data-id='${marker.label}']`)
-        .scrollIntoView(true);
+      const appartByClickMarketEl = document.querySelector(
+        `[data-id='${marker.label}']`
+      );
+      console.log(appartByClickMarketEl);
+
+      appartByClickMarketEl.scrollIntoView(true);
     });
     return marker;
   });
