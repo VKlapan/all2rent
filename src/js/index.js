@@ -42,13 +42,6 @@ const renderFormToAddNewAppartment = () => `
 </div>
 `;
 
-const addFromToAddNewAppartment = () => {
-  console.log('ADD FORM');
-  itemsGalleryEl.innerHTML = renderFormToAddNewAppartment();
-};
-
-btnAddNewAppartmentEl.addEventListener('click', addFromToAddNewAppartment);
-
 const renderItemsGallery = appartmentsArr => {
   return appartmentsArr
     .map(appart => {
@@ -139,37 +132,59 @@ function initMap() {
   // Add a marker clusterer to manage the markers.
   new MarkerClusterer({ markers, map });
 
-  var request = {
-    query: `Київ Конєва, 10`,
-    fields: ['name', 'geometry'],
+  // Find new Point to add ---start
+  const addFormToAddNewAppartment = () => {
+    console.log('ADD FORM');
+    itemsGalleryEl.innerHTML = renderFormToAddNewAppartment();
+
+    const btnSearchNewPointEl = document.querySelector('.form__button');
+
+    console.log(btnSearchNewPointEl);
+
+    var request = {
+      query: `Київ Конєва, 8`,
+      fields: ['name', 'geometry'],
+    };
+
+    btnSearchNewPointEl.addEventListener('click', event => {
+      event.preventDefault();
+      console.log('SEARCH');
+      findNewPoints(request);
+    });
   };
 
-  var service = new google.maps.places.PlacesService(map);
+  btnAddNewAppartmentEl.addEventListener('click', addFormToAddNewAppartment);
 
-  service.findPlaceFromQuery(request, function (results, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) {
-        createMarker(results[i]);
+  const findNewPoints = request => {
+    var service = new google.maps.places.PlacesService(map);
+
+    service.findPlaceFromQuery(request, function (results, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          createMarker(results[i]);
+        }
+        map.setCenter(results[0].geometry.location);
       }
-      map.setCenter(results[0].geometry.location);
+    });
+
+    function createMarker(place) {
+      if (!place.geometry || !place.geometry.location) return;
+
+      const marker = new google.maps.Marker({
+        map,
+        position: place.geometry.location,
+      });
+
+      google.maps.event.addListener(marker, 'click', mapsMouseEvent => {
+        console.log(mapsMouseEvent.latLng.toJSON());
+        console.log(place.name);
+        infoWindow.setContent(place.name || '');
+        infoWindow.open(map);
+      });
     }
-  });
+  };
 
-  function createMarker(place) {
-    if (!place.geometry || !place.geometry.location) return;
-
-    const marker = new google.maps.Marker({
-      map,
-      position: place.geometry.location,
-    });
-
-    google.maps.event.addListener(marker, 'click', mapsMouseEvent => {
-      console.log(mapsMouseEvent.latLng.toJSON());
-      console.log(place.name);
-      infoWindow.setContent(place.name || '');
-      infoWindow.open(map);
-    });
-  }
+  // Find new Point to add ---end
 }
 
 window.initMap = initMap;
