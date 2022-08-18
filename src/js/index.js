@@ -82,7 +82,7 @@ function initMap() {
       // infoWindow.setContent(marker.title);
       // infoWindow.open(map, marker);
       console.log('CLICK!!!', marker.label, map.zoom);
-      map.setZoom(14);
+      map.setZoom(18);
       map.setCenter(marker.position);
 
       const appartByClickMarketEl = document.querySelector(
