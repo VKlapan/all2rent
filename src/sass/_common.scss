@@ -1,5 +1,9 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
+.invisible {
+  display: none;
+}
+
 li {
   list-style: none;
 }

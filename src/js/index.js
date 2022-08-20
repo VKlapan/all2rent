@@ -1,62 +1,64 @@
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
 import { ModelObjectHandler } from './modelObjectsHandler';
+import * as Form from './formHandler';
+import { createMap } from './createMap';
+import { Gallery } from './createGallery';
 
 const model = new ModelObjectHandler();
 
 const locations = model.getAllPoints();
 const appartments = model.getAllAppartments();
 
-console.log(model.getAppartmentsByIdArr([2, 4, 10]));
-
 const itemsGalleryEl = document.querySelector('.item--list');
 
 const btnAddNewAppartmentEl = document.querySelector('.header--btn');
 
-const renderFormToAddNewAppartment = () => `
-<div class="form__wrap">
-  <h3 class="form__title">Додайте новий об'єкт</h3>
-  <form class="form__body">
-    <label class="form__label">
-      <span class="form__text">Адреса</span>
-      <input class="form__field" type="text" name="title" placeholder=" " />
-    </label>
+// const renderFormToAddNewAppartment = () => `
+// <div class="form__wrap">
+//   <h3 class="form__title">Додайте новий об'єкт</h3>
+//   <form class="form__body">
+//     <label class="form__label">
+//       <span class="form__text">Адреса</span>
+//       <input class="form__field" type="text" name="title" placeholder=" " />
+//     </label>
 
-    <label class="form__label">
-      <span class="form__text">Посилання на фото</span>
-      <input class="form__field" type="text" name="image" placeholder=" " />
-    </label>
+//     <label class="form__label">
+//       <span class="form__text invisible">Посилання на фото</span>
+//       <input class="form__field invisible" type="text" name="image" placeholder=" " />
+//     </label>
 
-    <label class="form__label">
-      <span class="form__text">Опис</span>
-      <textarea
-        class="form__field form__field--textarea"
-        name="comments"
-        placeholder=" "
-        cols="30"
-        rows="10"
-      ></textarea>
-    </label>
+//     <label class="form__label ">
+//       <span class="form__text invisible">Опис</span>
+//       <textarea
+//         class="form__field form__field--textarea invisible"
+//         name="comments"
+//         placeholder=" "
+//         cols="30"
+//         rows="10"
+//       ></textarea>
+//     </label>
+//     <button class="form__button " type="submit">Знайти адресу</button>
+//     <button class="form__button--save invisible" type="submit">Додати</button>
 
-    <button class="form__button" type="submit">Додати</button>
-  </form>
-</div>
-`;
+//   </form>
+// </div>
+// `;
 
-const renderItemsGallery = appartmentsArr => {
-  return appartmentsArr
-    .map(appart => {
-      return `
-    <li class="item" data-id="${appart.id}">
-    <img class="item--img" src="${appart.image}" alt="" />
-    <div class="item--details">
-      <h3 class="item--title">${appart.title}</h3>
-      <p class="item--description">${appart.description}</p>
-    </div>
-  </li>
-    `;
-    })
-    .join('');
-};
+// const renderItemsGallery = appartmentsArr => {
+//   return appartmentsArr
+//     .map(appart => {
+//       return `
+//     <li class="item" data-id="${appart.id}">
+//     <img class="item--img" src="${appart.image}" alt="" />
+//     <div class="item--details">
+//       <h3 class="item--title">${appart.title}</h3>
+//       <p class="item--description">${appart.description}</p>
+//     </div>
+//   </li>
+//     `;
+//     })
+//     .join('');
+// };
 
 // itemsGalleryEl.innerHTML = renderItemsGallery(model.getAppartmentsByIdArr([2]));
 
@@ -81,26 +83,26 @@ function initMap() {
     fullscreenControl: true,
   });
 
+  console.log('log bounds: ', map.getBounds());
+
   map.addListener('click', mapsMouseEvent => {
     console.log(mapsMouseEvent.latLng.toJSON());
   });
 
   map.addListener('bounds_changed', () => {
+    console.log('get bounds: ', map.getBounds().toJSON());
     const visibleArr = model.getVisiblePointsId(map.getBounds().toJSON());
 
     //console.log('visible', visibleArr);
 
-    itemsGalleryEl.innerHTML = renderItemsGallery(
+    itemsGalleryEl.innerHTML = Form.renderItemsGallery(
       model.getAppartmentsByIdArr(visibleArr)
     );
   });
 
   const infoWindow = new google.maps.InfoWindow();
-  // Create an array of alphabetical characters used to label the markers.
-  const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  // Add some markers to the map.
+
   const markers = locations.map(({ id, lat, lng }) => {
-    //    const label = labels[i % labels.length];
     const label = id.toString();
 
     const marker = new google.maps.Marker({
@@ -108,11 +110,7 @@ function initMap() {
       label,
     });
 
-    // markers can only be keyboard focusable when they have click listeners
-    // open info window when marker is clicked
     marker.addListener('click', mapsMouseEvent => {
-      // infoWindow.setContent(marker.title);
-      // infoWindow.open(map, marker);
       console.log('CLICK!!!', marker.label, map.zoom);
       map.setZoom(18);
       map.setCenter(marker.position);
@@ -134,57 +132,110 @@ function initMap() {
 
   // Find new Point to add ---start
   const addFormToAddNewAppartment = () => {
+    isGalleryRenderingBlockedWhileSearch = true;
     console.log('ADD FORM');
-    itemsGalleryEl.innerHTML = renderFormToAddNewAppartment();
 
-    const btnSearchNewPointEl = document.querySelector('.form__button');
+    const fields = ['name', 'geometry'];
 
-    console.log(btnSearchNewPointEl);
+    const onSubmit = formValues => {
+      console.log(formValues);
 
-    var request = {
-      query: `Київ Конєва, 8`,
-      fields: ['name', 'geometry'],
+      findNewPoints({ fields, query: formValues.title })
+        .then(console.log)
+        .catch(console.log);
     };
 
-    btnSearchNewPointEl.addEventListener('click', event => {
-      event.preventDefault();
-      console.log('SEARCH');
-      findNewPoints(request);
+    Form.renderFormToAddNewAppartment(itemsGalleryEl, onSubmit);
+  };
+
+  const findNewPoints = request => {
+    return new Promise((resolve, reject) => {
+      var service = new google.maps.places.PlacesService(map);
+
+      service.findPlaceFromQuery(request, function (results, status) {
+        model.setFindStatus(status);
+        // console.log('after set ', model.getFindStatus());
+
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+
+          map.setCenter(results[0].geometry.location);
+          resolve(status);
+        } else {
+          model.setFindStatus(status);
+          reject(status);
+        }
+      });
+
+      function createMarker(place) {
+        if (!place.geometry || !place.geometry.location) return;
+
+        const marker = new google.maps.Marker({
+          map,
+          position: place.geometry.location,
+        });
+
+        google.maps.event.addListener(marker, 'click', mapsMouseEvent => {
+          console.log(mapsMouseEvent.latLng.toJSON());
+          console.log(place.name);
+          infoWindow.setContent(place.name || '');
+          infoWindow.open(map);
+        });
+      }
     });
   };
 
   btnAddNewAppartmentEl.addEventListener('click', addFormToAddNewAppartment);
-
-  const findNewPoints = request => {
-    var service = new google.maps.places.PlacesService(map);
-
-    service.findPlaceFromQuery(request, function (results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          createMarker(results[i]);
-        }
-        map.setCenter(results[0].geometry.location);
-      }
-    });
-
-    function createMarker(place) {
-      if (!place.geometry || !place.geometry.location) return;
-
-      const marker = new google.maps.Marker({
-        map,
-        position: place.geometry.location,
-      });
-
-      google.maps.event.addListener(marker, 'click', mapsMouseEvent => {
-        console.log(mapsMouseEvent.latLng.toJSON());
-        console.log(place.name);
-        infoWindow.setContent(place.name || '');
-        infoWindow.open(map);
-      });
-    }
-  };
-
-  // Find new Point to add ---end
 }
 
-window.initMap = initMap;
+function createGallery(model) {
+  return {
+    showAppartments: () => {},
+  };
+}
+
+function createForm() {
+  return {
+    addEventListener: (eventName, handler) => {},
+  };
+}
+
+function main() {
+  const model = new ModelObjectHandler();
+  const map = createMap(document.getElementById('map'));
+  const gallery = new Gallery('.item--list');
+  const form = createForm();
+
+  map.addPoints(model.getAllPoints());
+  //  console.log(map.getBounds().toJSON());
+
+  function onBoundsChange(bounds) {
+    const visiblePoints = model.getVisiblePointsId(bounds);
+
+    console.log(visiblePoints);
+
+    console.log(model.getAppartmentsByIdArr([1, 2]));
+
+    gallery.showAppartments(model.getAppartmentsByIdArr(visiblePoints));
+  }
+
+  function searchOnMap(formValues) {
+    map
+      .searchPoint(formValues.title)
+      .then(coordinates => model.createAppartment(formValues, coordinates))
+      .then(() => {
+        map.zoomTo(coordanates);
+      })
+      .catch(console.err);
+  }
+
+  //observer
+  map.addEventListener('bounds_changed', onBoundsChange);
+
+  form.addEventListener('submit', searchOnMap);
+}
+
+window.main = main;
+//window.initMap = initMap;
