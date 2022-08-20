@@ -17,7 +17,7 @@ const appartments = [
     id: 1,
     title: 'Вільямса, 9',
     image:
-      'https://pixabay.com/get/gf12b1d03da74eb05c5b9325b1990e7af3c9c091d07e5ab23a9e6d7b67d1bda8360d4e22e05e3f67a09a04bc57dc38ee6ac315af183684bfad421c0d6505c6720_1280.jpg',
+      'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -25,7 +25,7 @@ const appartments = [
     id: 2,
     title: 'Ломоносова, 38',
     image:
-      'https://pixabay.com/get/g69883fb15e54c4184ee72e4af6523f00bb571de21c1ae00f547204b1aa634e6eb6fcfd2864a67a0ad94a143f4d2bf270766a1d5bbe9499cfd94a9ce27d008e3f_1280.jpg',
+      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -33,7 +33,7 @@ const appartments = [
     id: 3,
     title: 'Касьяна, 20',
     image:
-      'https://pixabay.com/get/g69883fb15e54c4184ee72e4af6523f00bb571de21c1ae00f547204b1aa634e6eb6fcfd2864a67a0ad94a143f4d2bf270766a1d5bbe9499cfd94a9ce27d008e3f_1280.jpg',
+      'https://images.pexels.com/photos/667838/pexels-photo-667838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -41,7 +41,7 @@ const appartments = [
     id: 4,
     title: 'Мейтуса, 10',
     image:
-      'https://pixabay.com/get/g605facb8c5e70c47738c0490cbd328b8f135edfbb14245756e51a406838949724564525fd8c001911af27519406852ad67c1204d1e7443907d4caeb4dfefab34_1280.jpg',
+      'https://images.pexels.com/photos/245208/pexels-photo-245208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -49,7 +49,7 @@ const appartments = [
     id: 5,
     title: 'Луценка, 11',
     image:
-      'https://pixabay.com/get/gac90db03e45057fc013b466885d76c0d7784d98a69804396cab11a6ce1f3f3019cf9909eb92b1447f46ae5e482f4e64cf50727fa1f96ac155f7142e3ce211926_1280.jpg',
+      'https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -57,7 +57,7 @@ const appartments = [
     id: 6,
     title: 'Васильківська, 11',
     image:
-      'https://pixabay.com/get/g1772059d72ebc6876bd237da7946f8c33791f47911c16b14f915a3516ea5b5870151b769ba7de5a91f181fdc78072bc1b557ed9728ff0e1b8805f8a63fdb303e_1280.jpg',
+      'https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -65,7 +65,7 @@ const appartments = [
     id: 7,
     title: 'Васильківська, 34',
     image:
-      'https://pixabay.com/get/ga329493137db8edaf0dc453781364815bb61f46faafa549a6d1bb0033942061db0abccd8b9c5b0043450993fcb58ada2f0afe6cb274d15fbbef5352b81e87931_1280.jpg',
+      'https://images.pexels.com/photos/1669799/pexels-photo-1669799.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -73,7 +73,7 @@ const appartments = [
     id: 8,
     title: 'Максимовича, 4',
     image:
-      'https://pixabay.com/get/g4a146f4b79c5ba8c6e34f416f4967d0e57f1d7aa4cb495a7b39efa63c4ca92e7e7ae229b268876ad2c7073bb82b93cf5d253b856c25ddecae5bf27802c7ca865_1280.jpg',
+      'https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -81,7 +81,7 @@ const appartments = [
     id: 9,
     title: 'Васильківська, 53',
     image:
-      'https://pixabay.com/get/gb5767a80b09b312fd1f54d6c567e4f5d81e1667b2d6b2c41180442007a6ef6614db499e824cb5f67dc2afc71445f7d1e2da5259ab9fae2684680e2da15b3dcc5_1280.jpg',
+      'https://images.pexels.com/photos/1648771/pexels-photo-1648771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -89,7 +89,7 @@ const appartments = [
     id: 10,
     title: 'Вільямса, 11',
     image:
-      'https://pixabay.com/get/g5478b53f60d5f19c667faaac9e2311d61761bc91d73c17832f70b814d5e0dc63a983db2b004e3837f27ae851432015b0615541a4f136e3a542dc0c55727806c0_1280.jpg',
+      'https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
@@ -97,7 +97,7 @@ const appartments = [
     id: 11,
     title: 'Конєва, 10',
     image:
-      'https://pixabay.com/get/g11372e99dce9882f8486595023808fab88294d037514776250db68103d4b6605500769194f4520fba3f29eadac62174c4a0cb3932f06749f4bd7fb29beab7692_1280.jpg',
+      'https://images.pexels.com/photos/265004/pexels-photo-265004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint tempore quidem aliquam, vero itaque architecto qui minima hic saepe placeat?',
   },
