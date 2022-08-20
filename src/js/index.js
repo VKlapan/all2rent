@@ -3,6 +3,7 @@ import { ModelObjectHandler } from './modelObjectsHandler';
 import * as Form from './formHandler';
 import { createMap } from './createMap';
 import { Gallery } from './createGallery';
+import { Form } from './createForm';
 
 const model = new ModelObjectHandler();
 
@@ -136,20 +137,13 @@ function initMap() {
   btnAddNewAppartmentEl.addEventListener('click', addFormToAddNewAppartment);
 }
 
-function createForm() {
-  return {
-    addEventListener: (eventName, handler) => {},
-  };
-}
-
 function main() {
   const model = new ModelObjectHandler();
   const map = createMap(document.getElementById('map'));
   const gallery = new Gallery('.item--list');
-  const form = createForm();
+  const form = new Form('.form-block');
 
   map.addPoints(model.getAllPoints());
-  //  console.log(map.getBounds().toJSON());
 
   function onBoundsChange(bounds) {
     const visiblePoints = model.getVisiblePointsId(bounds);
@@ -174,7 +168,9 @@ function main() {
   //observer
   map.addEventListener('bounds_changed', onBoundsChange);
 
-  form.addEventListener('submit', searchOnMap);
+  form.renderFormToAddNewAppartment(searchOnMap);
+
+  //form.addEventListener('submit', searchOnMap);
 }
 
 window.main = main;

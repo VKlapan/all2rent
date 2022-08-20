@@ -21,7 +21,7 @@ export function createMap(container) {
     fullscreenControl: true,
   });
 
-  const observers = [];
+  const mapObservers = [];
 
   const addPoints = points => {
     const markers = points.map(({ id, lat, lng }) => {
@@ -47,15 +47,15 @@ export function createMap(container) {
   map.addListener('bounds_changed', boundsChanged);
 
   function boundsChanged() {
-    for (let i = 0; i < observers.length; i++) {
-      if (observers[i].eventName === 'bounds_changed') {
-        observers[i].listener(map.getBounds().toJSON());
+    for (let i = 0; i < mapObservers.length; i++) {
+      if (mapObservers[i].eventName === 'bounds_changed') {
+        mapObservers[i].listener(map.getBounds().toJSON());
       }
     }
   }
 
   function addEventListener(eventName, listener) {
-    observers.push({ eventName, listener });
+    mapObservers.push({ eventName, listener });
   }
 
   function removeEventListener(eventName, handler) {}
