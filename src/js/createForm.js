@@ -3,6 +3,7 @@ export class Form {
 
   constructor(root) {
     this.rootEl = document.querySelector(root);
+    this.hideForm();
   }
 
   renderFormToAddNewAppartment = onSubmit => {
@@ -51,5 +52,13 @@ export class Form {
         console.log({ title, image, description });
         onSubmit({ title, image, description });
       });
+  };
+
+  hideForm = () => {
+    this.rootEl.classList.add('invisible');
+  };
+
+  openForm = () => {
+    this.rootEl.classList.remove('invisible');
   };
 }

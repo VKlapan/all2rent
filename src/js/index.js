@@ -5,10 +5,6 @@ import { createMap } from './createMap';
 import { Gallery } from './createGallery';
 import { Form } from './createForm';
 
-const model = new ModelObjectHandler();
-
-const btnAddNewAppartmentEl = document.querySelector('.header--btn');
-
 function initMap() {
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 16,
@@ -133,8 +129,6 @@ function initMap() {
       }
     });
   };
-
-  btnAddNewAppartmentEl.addEventListener('click', addFormToAddNewAppartment);
 }
 
 function main() {
@@ -142,6 +136,10 @@ function main() {
   const map = createMap(document.getElementById('map'));
   const gallery = new Gallery('.item--list');
   const form = new Form('.form-block');
+
+  const btnAddNewAppartmentEl = document.querySelector('.header--btn');
+  btnAddNewAppartmentEl.addEventListener('click', form.openForm);
+  btnAddNewAppartmentEl.addEventListener('click', gallery.hideGallery);
 
   map.addPoints(model.getAllPoints());
 

@@ -25,4 +25,12 @@ export class Gallery {
     console.log(appartments);
     this.itemsGalleryEl.innerHTML = this.renderItemsGallery(appartments);
   };
+
+  hideGallery = () => {
+    this.itemsGalleryEl.classList.add('invisible');
+  };
+
+  openGallery = () => {
+    this.itemsGalleryEl.classList.remove('invisible');
+  };
 }
