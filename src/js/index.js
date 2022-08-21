@@ -158,7 +158,7 @@ function main() {
     map
       .findNewPoints({ fields, query: formValues.title })
       .then(console.log)
-      .catch(console.log);
+      .catch(form.showErrorSearch);
   };
 
   form.renderFormToAddNewAppartment(searchOnMap);

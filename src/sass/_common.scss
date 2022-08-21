@@ -103,3 +103,11 @@ header {
   width: 260px;
   height: 300px;
 }
+
+.error__text {
+  &--not-found,
+  &--empty-fields {
+    font-size: 10px;
+    color: orangered;
+  }
+}
