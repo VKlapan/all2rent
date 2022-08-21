@@ -4,6 +4,7 @@ export class Form {
     inputAddress: '',
     inputImageLink: '',
     inputDescripton: '',
+    buttonSearch: '',
     stepAdd: [],
   };
 
@@ -38,8 +39,8 @@ export class Form {
         rows="10"
       ></textarea>
     </label>
-    <button class="form__button" type="submit">Знайти адресу</button>
-    <button class="form__button--save invisible" type="submit">Додати</button>
+    <button class="form__button form__button--search" option='step1'>Знайти адресу</button>
+    <button class="form__button form__button--save invisible" type="submit" option='stepAdd'>Додати</button>
     <div class='form__error'>
     <p class='error__text--not-found invisible'>Об'єкт не знайдено. Спробуйте ще</p>
     <p class='error__text--empty-fields invisible'>Заповніть всі поля</p>
@@ -53,6 +54,7 @@ export class Form {
     this.ref.inputDescripton = this.rootEl.querySelector(
       'input[name="description"]'
     );
+    this.ref.buttonSearch = this.rootEl.querySelector('.form__button--search');
     this.ref.stepAdd = this.rootEl.querySelectorAll('[option="stepAdd"]');
 
     this.ref.inputAddress.addEventListener('focus', () => {
@@ -61,7 +63,7 @@ export class Form {
     });
 
     this.rootEl
-      .querySelector('.form__button')
+      .querySelector('.form__button--search')
       .addEventListener('click', event => {
         event.preventDefault();
 
@@ -82,7 +84,8 @@ export class Form {
   };
 
   openFormAfterSearch = () => {
-    console.log(this.ref.stepAdd);
+    this.ref.buttonSearch.classList.add('invisible');
+    this.ref.stepAdd.forEach(item => item.classList.remove('invisible'));
   };
 
   hideForm = () => {

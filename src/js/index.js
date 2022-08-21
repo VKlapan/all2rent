@@ -160,7 +160,9 @@ function main() {
       .catch(form.showErrorSearch);
   };
 
-  const addNewAppartment = () => {};
+  const addNewAppartment = () => {
+    console.log('SUBMIT');
+  };
 
   form.renderFormToAddNewAppartment(searchOnMap, addNewAppartment);
 }
