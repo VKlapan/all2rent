@@ -54,6 +54,34 @@ export function createMap(container) {
     }
   }
 
+  const findNewPoints = request => {
+    return new Promise((resolve, reject) => {
+      var service = new google.maps.places.PlacesService(map);
+
+      service.findPlaceFromQuery(request, function (results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+
+          map.setCenter(results[0].geometry.location);
+          resolve(status);
+        } else {
+          reject(status);
+        }
+      });
+
+      function createMarker(place) {
+        if (!place.geometry || !place.geometry.location) return;
+
+        const marker = new google.maps.Marker({
+          map,
+          position: place.geometry.location,
+        });
+      }
+    });
+  };
+
   function addEventListener(eventName, listener) {
     mapObservers.push({ eventName, listener });
   }
@@ -62,7 +90,7 @@ export function createMap(container) {
 
   return {
     addPoints,
-    searchPoint: () => Promise.reject('Not implemented'),
+    findNewPoints,
     zoomTo: () => {},
     addEventListener,
     removeEventListener,

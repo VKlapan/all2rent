@@ -7,8 +7,6 @@ export class Form {
   }
 
   renderFormToAddNewAppartment = onSubmit => {
-    console.log(this.rootEl);
-
     this.rootEl.innerHTML = `
 <div class="form__wrap">
   <h3 class="form__title">Додайте новий об'єкт</h3>
@@ -48,8 +46,6 @@ export class Form {
         const title = event.currentTarget.elements['title'].value;
         const image = event.currentTarget.elements['image'].value;
         const description = event.currentTarget.elements['description'].value;
-
-        console.log({ title, image, description });
         onSubmit({ title, image, description });
       });
   };

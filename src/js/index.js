@@ -146,29 +146,22 @@ function main() {
   function onBoundsChange(bounds) {
     const visiblePoints = model.getVisiblePointsId(bounds);
 
-    console.log(visiblePoints);
-
-    console.log(model.getAppartmentsByIdArr([1, 2]));
-
     gallery.showAppartments(model.getAppartmentsByIdArr(visiblePoints));
-  }
-
-  function searchOnMap(formValues) {
-    map
-      .searchPoint(formValues.title)
-      .then(coordinates => model.createAppartment(formValues, coordinates))
-      .then(() => {
-        map.zoomTo(coordanates);
-      })
-      .catch(console.err);
   }
 
   //observer
   map.addEventListener('bounds_changed', onBoundsChange);
 
-  form.renderFormToAddNewAppartment(searchOnMap);
+  const searchOnMap = formValues => {
+    console.log(formValues);
+    const fields = ['name', 'geometry'];
+    map
+      .findNewPoints({ fields, query: formValues.title })
+      .then(console.log)
+      .catch(console.log);
+  };
 
-  //form.addEventListener('submit', searchOnMap);
+  form.renderFormToAddNewAppartment(searchOnMap);
 }
 
 window.main = main;

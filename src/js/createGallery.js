@@ -22,7 +22,6 @@ export class Gallery {
   };
 
   showAppartments = appartments => {
-    console.log(appartments);
     this.itemsGalleryEl.innerHTML = this.renderItemsGallery(appartments);
   };
 
