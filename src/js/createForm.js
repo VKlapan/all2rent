@@ -4,6 +4,7 @@ export class Form {
     inputAddress: '',
     inputImageLink: '',
     inputDescripton: '',
+    stepAdd: [],
   };
 
   constructor(root) {
@@ -11,7 +12,7 @@ export class Form {
     this.hideForm();
   }
 
-  renderFormToAddNewAppartment = onSubmit => {
+  renderFormToAddNewAppartment = (onSubmitSearch, onSubmitAdd) => {
     this.rootEl.innerHTML = `
 <div class="form__wrap">
   <h3 class="form__title">Додайте новий об'єкт</h3>
@@ -22,21 +23,22 @@ export class Form {
     </label>
 
     <label class="form__label">
-      <span class="form__text invisible">Посилання на фото</span>
-      <input class="form__field invisible" type="text" name="image" placeholder="" />
+      <span class="form__text invisible" option="stepAdd">Посилання на фото</span>
+      <input class="form__field invisible" type="text" name="image" option="stepAdd" placeholder="" />
     </label>
 
     <label class="form__label ">
-      <span class="form__text invisible">Опис</span>
+      <span class="form__text invisible" option="stepAdd">Опис</span>
       <textarea
         class="form__field form__field--textarea invisible"
         name="description"
+        option="stepAdd"
         placeholder=" "
         cols="30"
         rows="10"
       ></textarea>
     </label>
-    <button class="form__button " type="submit">Знайти адресу</button>
+    <button class="form__button" type="submit">Знайти адресу</button>
     <button class="form__button--save invisible" type="submit">Додати</button>
     <div class='form__error'>
     <p class='error__text--not-found invisible'>Об'єкт не знайдено. Спробуйте ще</p>
@@ -51,11 +53,21 @@ export class Form {
     this.ref.inputDescripton = this.rootEl.querySelector(
       'input[name="description"]'
     );
+    this.ref.stepAdd = this.rootEl.querySelectorAll('[option="stepAdd"]');
 
     this.ref.inputAddress.addEventListener('focus', () => {
       this.ref.inputAddress.value = '';
       this.hideErrorSearch();
     });
+
+    this.rootEl
+      .querySelector('.form__button')
+      .addEventListener('click', event => {
+        event.preventDefault();
+
+        const title = this.ref.inputAddress.value;
+        onSubmitSearch(title);
+      });
 
     this.rootEl
       .querySelector('.form__body')
@@ -65,8 +77,12 @@ export class Form {
         const title = event.currentTarget.elements['title'].value;
         const image = event.currentTarget.elements['image'].value;
         const description = event.currentTarget.elements['description'].value;
-        onSubmit({ title, image, description });
+        onSubmitAdd({ title, image, description });
       });
+  };
+
+  openFormAfterSearch = () => {
+    console.log(this.ref.stepAdd);
   };
 
   hideForm = () => {

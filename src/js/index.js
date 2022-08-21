@@ -152,16 +152,17 @@ function main() {
   //observer
   map.addEventListener('bounds_changed', onBoundsChange);
 
-  const searchOnMap = formValues => {
-    console.log(formValues);
+  const searchOnMap = title => {
     const fields = ['name', 'geometry'];
     map
-      .findNewPoints({ fields, query: formValues.title })
-      .then(console.log)
+      .findNewPoints({ fields, query: title })
+      .then(form.openFormAfterSearch)
       .catch(form.showErrorSearch);
   };
 
-  form.renderFormToAddNewAppartment(searchOnMap);
+  const addNewAppartment = () => {};
+
+  form.renderFormToAddNewAppartment(searchOnMap, addNewAppartment);
 }
 
 window.main = main;
