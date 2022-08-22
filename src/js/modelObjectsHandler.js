@@ -1,30 +1,44 @@
 import { points, appartments } from './points';
 
 export class ModelObjectHandler {
+  initModel = () => {
+    if (JSON.parse(localStorage.getItem('points')) === null) {
+      localStorage.setItem('points', JSON.stringify(points));
+    }
+
+    if (JSON.parse(localStorage.getItem('appartments')) === null) {
+      localStorage.setItem('appartments', JSON.stringify(appartments));
+    }
+  };
+
   getAllPoints = () => {
-    return points;
+    return JSON.parse(localStorage.getItem('points'));
   };
 
   getLastPointId = () => {
-    return points[points.length - 1].id;
+    const pnts = JSON.parse(localStorage.getItem('points'));
+    return pnts[pnts.length - 1].id;
   };
 
   getAllAppartments = () => {
-    return appartments;
+    return JSON.parse(localStorage.getItem('appartments'));
   };
 
   getAppartmentById = id => {
-    return appartments[
-      appartments.findIndex(appartment => appartment.id === id)
-    ];
+    const apparts = JSON.parse(localStorage.getItem('appartments'));
+    return apparts[apparts.findIndex(appartment => appartment.id === id)];
   };
 
   getAppartmentsByIdArr = idArr => {
-    return appartments.filter(appartment => idArr.includes(appartment.id));
+    return JSON.parse(localStorage.getItem('appartments')).filter(appartment =>
+      idArr.includes(appartment.id)
+    );
   };
 
   getVisiblePointsId = rectangle =>
-    points.filter(isInBounds(rectangle)).map(getPointId);
+    JSON.parse(localStorage.getItem('points'))
+      .filter(isInBounds(rectangle))
+      .map(getPointId);
 
   initBuffer = (lastPointId, { lat, lng }) => {
     this.bufferObj.status = 'PREPAING';
@@ -38,6 +52,17 @@ export class ModelObjectHandler {
     this.bufferObj.title = title;
     this.bufferObj.image = image;
     this.bufferObj.description = description;
+  };
+
+  addNewAppartment = ({ id, lat, lng, title, image, description }) => {
+    const pnts = JSON.parse(localStorage.getItem('points'));
+    const apparts = JSON.parse(localStorage.getItem('appartments'));
+
+    pnts.push({ id, lat, lng });
+    apparts.push({ id, title, image, description });
+
+    localStorage.setItem('points', JSON.stringify(pnts));
+    localStorage.setItem('appartments', JSON.stringify(apparts));
   };
 
   bufferObj = {

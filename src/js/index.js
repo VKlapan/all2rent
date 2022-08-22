@@ -133,6 +133,8 @@ function initMap() {
 
 function main() {
   const model = new ModelObjectHandler();
+  model.initModel();
+
   const map = createMap(document.getElementById('map'));
   const gallery = new Gallery('.item--list');
   const form = new Form('.form-block');
@@ -145,7 +147,6 @@ function main() {
 
   function onBoundsChange(bounds) {
     const visiblePoints = model.getVisiblePointsId(bounds);
-
     gallery.showAppartments(model.getAppartmentsByIdArr(visiblePoints));
   }
 
@@ -167,7 +168,9 @@ function main() {
 
   const prepareNewAppartment = ({ title, image, description }) => {
     model.addAppartmentToBuffer({ title, image, description });
-    console.log(model.bufferObj);
+    model.addNewAppartment(model.bufferObj);
+    form.hideForm();
+    gallery.openGallery();
   };
 
   form.renderFormToAddNewAppartment(searchOnMap, prepareNewAppartment);
