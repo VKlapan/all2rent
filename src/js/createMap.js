@@ -60,12 +60,14 @@ export function createMap(container) {
 
       service.findPlaceFromQuery(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
-          }
+          createMarker(results[0]);
+          const newPointCoordinates = {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+          };
 
           map.setCenter(results[0].geometry.location);
-          resolve(status);
+          resolve(newPointCoordinates);
         } else {
           reject(status);
         }

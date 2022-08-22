@@ -1,18 +1,12 @@
 import { points, appartments } from './points';
 
 export class ModelObjectHandler {
-  findStatus = null;
-
-  setFindStatus = status => {
-    this.findStatus = status;
-  };
-
-  getFindStatus = () => {
-    return this.findStatus;
-  };
-
   getAllPoints = () => {
     return points;
+  };
+
+  getLastPointId = () => {
+    return points[points.length - 1].id;
   };
 
   getAllAppartments = () => {
@@ -31,7 +25,33 @@ export class ModelObjectHandler {
 
   getVisiblePointsId = rectangle =>
     points.filter(isInBounds(rectangle)).map(getPointId);
+
+  initBuffer = (lastPointId, { lat, lng }) => {
+    this.bufferObj.status = 'PREPAING';
+    this.bufferObj.id = lastPointId + 1;
+    this.bufferObj.lat = lat;
+    this.bufferObj.lng = lng;
+  };
+
+  addAppartmentToBuffer = ({ title, image, description }) => {
+    this.bufferObj.status = 'READY';
+    this.bufferObj.title = title;
+    this.bufferObj.image = image;
+    this.bufferObj.description = description;
+  };
+
+  bufferObj = {
+    status: 'EMPTY',
+    id: null,
+    lat: null,
+    lng: null,
+    title: '',
+    image: '',
+    description: '',
+  };
 }
+
+//STATUS_OF_BUFFER = (EMPTY, PRERAPING, READY);
 
 const getPointId = point => point.id;
 

@@ -152,19 +152,25 @@ function main() {
   //observer
   map.addEventListener('bounds_changed', onBoundsChange);
 
+  const prepareNewPointAndNewAppartmentForm = newPointCoordinates => {
+    model.initBuffer(model.getLastPointId(), newPointCoordinates);
+    form.openFormAfterSearch();
+  };
+
   const searchOnMap = title => {
     const fields = ['name', 'geometry'];
     map
       .findNewPoints({ fields, query: title })
-      .then(form.openFormAfterSearch)
+      .then(prepareNewPointAndNewAppartmentForm)
       .catch(form.showErrorSearch);
   };
 
-  const addNewAppartment = () => {
-    console.log('SUBMIT');
+  const prepareNewAppartment = ({ title, image, description }) => {
+    model.addAppartmentToBuffer({ title, image, description });
+    console.log(model.bufferObj);
   };
 
-  form.renderFormToAddNewAppartment(searchOnMap, addNewAppartment);
+  form.renderFormToAddNewAppartment(searchOnMap, prepareNewAppartment);
 }
 
 window.main = main;
