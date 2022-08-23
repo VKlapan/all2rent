@@ -1,5 +1,7 @@
 Задание.
 
+https://docs.google.com/document/d/1Aqc24XbbciBoLa76LJuQHceOX4NaJO_UCp7PJ5z3UNE/edit?usp=sharing
+
 Локально реализовать веб сайт.
 
 В сайт необходимо интегрировать карту. При нажатии на точку на карте - справа
