@@ -36,6 +36,13 @@ export function createMap(container) {
         console.log('CLICK!!!', marker.label, map.zoom);
         map.setZoom(18);
         map.setCenter(marker.position);
+
+        const appartByClickMarketEl = document.querySelector(
+          `[data-id='${marker.label}']`
+        );
+        console.log(appartByClickMarketEl);
+
+        appartByClickMarketEl.scrollIntoView(true);
       });
 
       return marker;
