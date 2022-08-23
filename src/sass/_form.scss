@@ -72,3 +72,21 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   }
 }
+
+.form__block {
+  overflow: hidden;
+  background-color: white;
+  position: absolute;
+  top: 0px;
+  width: 260px;
+  height: 450px;
+  padding: 10px;
+}
+
+.error__text {
+  &--not-found,
+  &--empty-fields {
+    font-size: 10px;
+    color: orangered;
+  }
+}

@@ -32,6 +32,10 @@ export function createMap(container) {
         label,
       });
 
+      // вынести колл-бек из лисенера - дать понятное имя
+      // убрать querySelector (document) устранить выход из контекста
+      // 18 - константа зума: сделать константой с понятным именем "масштаб крупный (уменьшеный)"
+
       marker.addListener('click', mapsMouseEvent => {
         map.setZoom(18);
         map.setCenter(marker.position);
@@ -49,6 +53,12 @@ export function createMap(container) {
   };
 
   map.addListener('bounds_changed', boundsChanged);
+
+  setTimeout(() => {
+    console.log('get bounds', map.getBounds().toJSON());
+  }, 3000);
+
+  // разносить подписчиков по типу ивента на этапе подписки
 
   function boundsChanged() {
     for (let i = 0; i < mapObservers.length; i++) {

@@ -67,7 +67,7 @@ header {
   padding-right: 10px;
 }
 
-.main--gallery {
+.main__gallery {
   position: relative;
   text-align: center;
   width: 280px;
@@ -76,7 +76,7 @@ header {
   scroll-behavior: smooth;
 }
 
-.item--list {
+.item__list {
   padding: 5px;
 }
 .item {
@@ -93,22 +93,4 @@ header {
 
 .item--description {
   font-size: 12px;
-}
-
-.form-block {
-  overflow: hidden;
-  background-color: white;
-  position: absolute;
-  top: 0px;
-  width: 260px;
-  height: 450px;
-  padding: 10px;
-}
-
-.error__text {
-  &--not-found,
-  &--empty-fields {
-    font-size: 10px;
-    color: orangered;
-  }
 }

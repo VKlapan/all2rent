@@ -1,5 +1,4 @@
 import { ModelObjectHandler } from './modelObjectsHandler';
-import * as Form from './formHandler';
 import { createMap } from './createMap';
 import { Gallery } from './createGallery';
 import { Form } from './createForm';
@@ -9,8 +8,11 @@ function main() {
   model.initModel();
 
   const map = createMap(document.getElementById('map'));
-  const gallery = new Gallery('.item--list');
-  const form = new Form('.form-block');
+  const gallery = new Gallery('.item__list');
+  const form = new Form('.form__block');
+
+  // btn -> button + ENG rule - "El"
+  //document.querySelector + -- __
 
   const btnAddNewAppartmentEl = document.querySelector('.header--btn');
   btnAddNewAppartmentEl.addEventListener('click', form.openForm);
@@ -23,11 +25,13 @@ function main() {
     gallery.showAppartments(model.getAppartmentsByIdArr(visiblePoints));
   }
 
-  //observer
   map.addEventListener('bounds_changed', onBoundsChange);
+
+  // отказаться от Буфера. каждому шагу свой зен. передавать коордтнаты в скрытое поле формы
 
   const prepareNewPointAndNewAppartmentForm = newPointCoordinates => {
     model.initBuffer(model.getLastPointId(), newPointCoordinates);
+
     form.openFormAfterSearch();
   };
 
@@ -42,8 +46,10 @@ function main() {
   const prepareNewAppartment = ({ title, image, description }) => {
     model.addAppartmentToBuffer({ title, image, description });
     model.addNewAppartment(model.bufferObj);
+
     form.hideFormAfterSearch();
     form.hideForm();
+
     gallery.openGallery();
     gallery.showAppartments(model.getAppartmentById(model.bufferObj.id));
   };
