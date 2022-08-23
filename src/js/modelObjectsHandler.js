@@ -26,7 +26,7 @@ export class ModelObjectHandler {
 
   getAppartmentById = id => {
     const apparts = JSON.parse(localStorage.getItem('appartments'));
-    return apparts[apparts.findIndex(appartment => appartment.id === id)];
+    return [apparts[apparts.findIndex(appartment => appartment.id === id)]];
   };
 
   getAppartmentsByIdArr = idArr => {

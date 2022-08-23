@@ -171,6 +171,7 @@ function main() {
     model.addNewAppartment(model.bufferObj);
     form.hideForm();
     gallery.openGallery();
+    gallery.showAppartments(model.getAppartmentById(model.bufferObj.id));
   };
 
   form.renderFormToAddNewAppartment(searchOnMap, prepareNewAppartment);
