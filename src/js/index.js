@@ -169,6 +169,7 @@ function main() {
   const prepareNewAppartment = ({ title, image, description }) => {
     model.addAppartmentToBuffer({ title, image, description });
     model.addNewAppartment(model.bufferObj);
+    form.hideFormAfterSearch();
     form.hideForm();
     gallery.openGallery();
     gallery.showAppartments(model.getAppartmentById(model.bufferObj.id));

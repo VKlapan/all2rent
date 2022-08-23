@@ -25,7 +25,7 @@ export class Form {
 
     <label class="form__label">
       <span class="form__text invisible" option="stepAdd">Посилання на фото</span>
-      <input class="form__field invisible" type="text" name="image" option="stepAdd" placeholder="" />
+      <input class="form__field invisible" type="text" name="image" option="stepAdd" placeholder="посилання на фото" />
     </label>
 
     <label class="form__label ">
@@ -34,7 +34,7 @@ export class Form {
         class="form__field form__field--textarea invisible"
         name="description"
         option="stepAdd"
-        placeholder=" "
+        placeholder="опис об'єкту"
         cols="30"
         rows="10"
       ></textarea>
@@ -52,7 +52,7 @@ export class Form {
     this.ref.inputAddress = this.rootEl.querySelector('input[name="title"]');
     this.ref.inputImageLink = this.rootEl.querySelector('input[name="image"]');
     this.ref.inputDescripton = this.rootEl.querySelector(
-      'input[name="description"]'
+      '[name="description"]'
     );
     this.ref.buttonSearch = this.rootEl.querySelector('.form__button--search');
     this.ref.stepAdd = this.rootEl.querySelectorAll('[option="stepAdd"]');
@@ -86,6 +86,14 @@ export class Form {
   openFormAfterSearch = () => {
     this.ref.buttonSearch.classList.add('invisible');
     this.ref.stepAdd.forEach(item => item.classList.remove('invisible'));
+  };
+
+  hideFormAfterSearch = () => {
+    this.ref.inputAddress.value = '';
+    this.ref.inputImageLink.value = '';
+    this.ref.inputDescripton.value = '';
+    this.ref.buttonSearch.classList.remove('invisible');
+    this.ref.stepAdd.forEach(item => item.classList.add('invisible'));
   };
 
   hideForm = () => {
