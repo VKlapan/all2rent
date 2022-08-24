@@ -55,14 +55,14 @@ export class ModelObjectHandler {
   };
 
   addNewApartment = ({ id, lat, lng, title, image, description }) => {
-    const pnts = JSON.parse(localStorage.getItem('points'));
-    const aparts = JSON.parse(localStorage.getItem('apartments'));
+    const currentPoints = JSON.parse(localStorage.getItem('points'));
+    const currentApartments = JSON.parse(localStorage.getItem('apartments'));
 
-    pnts.push({ id, lat, lng });
-    aparts.push({ id, title, image, description });
+    currentPoints.push({ id, lat, lng });
+    currentApartments.push({ id, title, image, description });
 
-    localStorage.setItem('points', JSON.stringify(pnts));
-    localStorage.setItem('apartments', JSON.stringify(aparts));
+    localStorage.setItem('points', JSON.stringify(currentPoints));
+    localStorage.setItem('apartments', JSON.stringify(currentApartments));
   };
 
   bufferObj = {
