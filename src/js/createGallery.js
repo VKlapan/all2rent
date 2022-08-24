@@ -5,15 +5,15 @@ export class Gallery {
     this.itemsGalleryEl = document.querySelector(root);
   }
 
-  renderItemsGallery = appartments => {
-    return appartments
-      .map(appart => {
+  renderItemsGallery = apartments => {
+    return apartments
+      .map(apart => {
         return `
-    <li class="item" data-id="${appart.id}">
-    <img class="item--img" src="${appart.image}" alt="" />
-    <div class="item--details">
-      <h3 class="item--title">${appart.title}</h3>
-      <p class="item--description">${appart.description}</p>
+    <li class="item" data-id="${apart.id}">
+    <img class="item__img" src="${apart.image}" alt="" />
+    <div class="item__details">
+      <h3 class="item__title">${apart.title}</h3>
+      <p class="item__description">${apart.description}</p>
     </div>
   </li>
     `;
@@ -21,8 +21,8 @@ export class Gallery {
       .join('');
   };
 
-  showAppartments = appartments => {
-    this.itemsGalleryEl.innerHTML = this.renderItemsGallery(appartments);
+  showApartments = apartments => {
+    this.itemsGalleryEl.innerHTML = this.renderItemsGallery(apartments);
   };
 
   hideGallery = () => {

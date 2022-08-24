@@ -40,10 +40,10 @@ export function createMap(container) {
         map.setZoom(18);
         map.setCenter(marker.position);
 
-        const appartByClickMarketEl = document.querySelector(
+        const ApartByClickMarketEl = document.querySelector(
           `[data-id='${marker.label}']`
         );
-        appartByClickMarketEl.scrollIntoView(true);
+        ApartByClickMarketEl.scrollIntoView(true);
       });
 
       return marker;

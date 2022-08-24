@@ -12,7 +12,7 @@ const points = [
   { id: 11, lat: 50.383335, lng: 30.4582703 },
 ];
 
-const appartments = [
+const apartments = [
   {
     id: 1,
     title: 'Вільямса, 9',
@@ -103,4 +103,4 @@ const appartments = [
   },
 ];
 
-export { points, appartments };
+export { points, apartments };

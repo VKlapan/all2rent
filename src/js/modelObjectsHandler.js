@@ -1,4 +1,4 @@
-import { points, appartments } from './points';
+import { points, apartments } from './points';
 
 export class ModelObjectHandler {
   initModel = () => {
@@ -6,8 +6,8 @@ export class ModelObjectHandler {
       localStorage.setItem('points', JSON.stringify(points));
     }
 
-    if (JSON.parse(localStorage.getItem('appartments')) === null) {
-      localStorage.setItem('appartments', JSON.stringify(appartments));
+    if (JSON.parse(localStorage.getItem('apartments')) === null) {
+      localStorage.setItem('apartments', JSON.stringify(apartments));
     }
   };
 
@@ -20,18 +20,18 @@ export class ModelObjectHandler {
     return pnts[pnts.length - 1].id;
   };
 
-  getAllAppartments = () => {
-    return JSON.parse(localStorage.getItem('appartments'));
+  getAllApartments = () => {
+    return JSON.parse(localStorage.getItem('apartments'));
   };
 
-  getAppartmentById = id => {
-    const apparts = JSON.parse(localStorage.getItem('appartments'));
-    return [apparts[apparts.findIndex(appartment => appartment.id === id)]];
+  getApartmentById = id => {
+    const aparts = JSON.parse(localStorage.getItem('apartments'));
+    return [aparts[aparts.findIndex(apartment => apartment.id === id)]];
   };
 
-  getAppartmentsByIdArr = idArr => {
-    return JSON.parse(localStorage.getItem('appartments')).filter(appartment =>
-      idArr.includes(appartment.id)
+  getApartmentsByIdArr = idArr => {
+    return JSON.parse(localStorage.getItem('apartments')).filter(apartment =>
+      idArr.includes(apartment.id)
     );
   };
 
@@ -47,22 +47,22 @@ export class ModelObjectHandler {
     this.bufferObj.lng = lng;
   };
 
-  addAppartmentToBuffer = ({ title, image, description }) => {
+  addApartmentToBuffer = ({ title, image, description }) => {
     this.bufferObj.status = 'READY';
     this.bufferObj.title = title;
     this.bufferObj.image = image;
     this.bufferObj.description = description;
   };
 
-  addNewAppartment = ({ id, lat, lng, title, image, description }) => {
+  addNewApartment = ({ id, lat, lng, title, image, description }) => {
     const pnts = JSON.parse(localStorage.getItem('points'));
-    const apparts = JSON.parse(localStorage.getItem('appartments'));
+    const aparts = JSON.parse(localStorage.getItem('apartments'));
 
     pnts.push({ id, lat, lng });
-    apparts.push({ id, title, image, description });
+    aparts.push({ id, title, image, description });
 
     localStorage.setItem('points', JSON.stringify(pnts));
-    localStorage.setItem('appartments', JSON.stringify(apparts));
+    localStorage.setItem('apartments', JSON.stringify(aparts));
   };
 
   bufferObj = {

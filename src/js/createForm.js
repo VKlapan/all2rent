@@ -13,7 +13,7 @@ export class Form {
     this.hideForm();
   }
 
-  renderFormToAddNewAppartment = (onSubmitSearch, onSubmitAdd) => {
+  renderFormToAddNewApartment = (onSubmitSearch, onSubmitAdd) => {
     this.rootEl.innerHTML = `
 <div class="form__wrap">
   <h3 class="form__title">Додайте новий об'єкт</h3>
