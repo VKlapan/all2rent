@@ -15,7 +15,11 @@ export class Form {
     this.hideForm();
   }
 
-  renderFormToAddNewApartment = (onSubmitSearch, onSubmitAdd) => {
+  renderFormToAddNewApartment = (
+    onSubmitSearch,
+    onSubmitAdd,
+    onSubmitClose
+  ) => {
     this.rootEl.innerHTML = `
 <div class="form__wrap">
   <h3 class="form__title">Додайте новий об'єкт</h3>
@@ -48,6 +52,7 @@ export class Form {
     <div class='form__error'>
     <p class='error__text--not-found invisible'>Об'єкт не знайдено. Спробуйте ще</p>
     <p class='error__text--empty-fields invisible'>Заповніть всі поля</p>
+        <button class="form__button form__button--close">Відміна</button>
     </div>
 
   </form>
@@ -89,17 +94,18 @@ export class Form {
         const description = event.currentTarget.elements['description'].value;
         onSubmitAdd({ lat, lng, title, image, description });
       });
+
+    this.rootEl
+      .querySelector('.form__button--close')
+      .addEventListener('click', event => {
+        event.preventDefault();
+        onSubmitClose();
+      });
   };
 
   saveFoundedCoordinates = newPointCoordinates => {
-    console.log(newPointCoordinates.lat);
-    console.log(newPointCoordinates.lng);
-
     this.ref.inputLat.value = newPointCoordinates.lat;
     this.ref.inputLng.value = newPointCoordinates.lng;
-
-    console.log(this.ref.inputLat.value);
-    console.log(this.ref.inputLng.value);
   };
 
   openFormAfterSearch = () => {

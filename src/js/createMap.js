@@ -98,6 +98,10 @@ export function createMap(container) {
     });
   };
 
+  const zoomTo = zoom => {
+    map.setCenter({ lat: 50.3864813, lng: 30.4610184 });
+    map.setZoom(16);
+  };
   function addEventListener(eventName, listener) {
     mapObservers.push({ eventName, listener });
   }
@@ -107,7 +111,7 @@ export function createMap(container) {
   return {
     addPoints,
     findNewPoints,
-    zoomTo: () => {},
+    zoomTo,
     addEventListener,
     removeEventListener,
   };

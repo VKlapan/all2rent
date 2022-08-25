@@ -60,9 +60,21 @@ function main() {
 
     gallery.openGallery();
     gallery.showApartments(model.getApartmentById(model.getLastPointId()));
+
+    map.addPoints(model.getAllPoints());
+
+    setTimeout(() => map.zoomTo(8), 3000);
   };
 
-  form.renderFormToAddNewApartment(searchOnMap, submitNewApartment);
+  const cancelForm = () => {
+    form.hideFormAfterSearch();
+    form.hideForm();
+
+    gallery.openGallery();
+    map.zoomTo(8);
+  };
+
+  form.renderFormToAddNewApartment(searchOnMap, submitNewApartment, cancelForm);
 }
 
 window.main = main;
