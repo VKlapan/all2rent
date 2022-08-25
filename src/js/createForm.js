@@ -92,6 +92,13 @@ export class Form {
         const title = event.currentTarget.elements['title'].value;
         const image = event.currentTarget.elements['image'].value;
         const description = event.currentTarget.elements['description'].value;
+
+        if (!title || !image || !description) {
+          this.showErrorSubmit();
+          setTimeout(this.hideErrorSubmit, 3000);
+          return;
+        }
+
         onSubmitAdd({ lat, lng, title, image, description });
       });
 
@@ -138,6 +145,18 @@ export class Form {
   showErrorSearch = () => {
     this.rootEl
       .querySelector('.error__text--not-found')
+      .classList.remove('invisible');
+  };
+
+  hideErrorSubmit = () => {
+    this.rootEl
+      .querySelector('.error__text--empty-fields')
+      .classList.add('invisible');
+  };
+
+  showErrorSubmit = () => {
+    this.rootEl
+      .querySelector('.error__text--empty-fields')
       .classList.remove('invisible');
   };
 }
