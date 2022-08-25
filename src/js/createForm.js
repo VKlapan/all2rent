@@ -1,6 +1,8 @@
 export class Form {
   rootEl = '';
   ref = {
+    inputLat: '',
+    inputLng: '',
     inputAddress: '',
     inputImageLink: '',
     inputDescripton: '',
@@ -18,6 +20,8 @@ export class Form {
 <div class="form__wrap">
   <h3 class="form__title">Додайте новий об'єкт</h3>
   <form class="form__body">
+  <input class="invisible" type="text" name="lat"></input>
+    <input class="invisible" type="text" name="lng"></input>
     <label class="form__label">
       <span class="form__text">Адреса</span>
       <input class="form__field" type="text" name="title" placeholder="назва вулиці, № будинку" />
@@ -49,6 +53,8 @@ export class Form {
   </form>
 </div>
 `;
+    this.ref.inputLat = this.rootEl.querySelector('input[name="lat"]');
+    this.ref.inputLng = this.rootEl.querySelector('input[name="lng"]');
     this.ref.inputAddress = this.rootEl.querySelector('input[name="title"]');
     this.ref.inputImageLink = this.rootEl.querySelector('input[name="image"]');
     this.ref.inputDescripton = this.rootEl.querySelector(
@@ -75,12 +81,25 @@ export class Form {
       .querySelector('.form__body')
       .addEventListener('submit', event => {
         event.preventDefault();
+        const lat = Number(event.currentTarget.elements['lat'].value);
+        const lng = Number(event.currentTarget.elements['lng'].value);
 
         const title = event.currentTarget.elements['title'].value;
         const image = event.currentTarget.elements['image'].value;
         const description = event.currentTarget.elements['description'].value;
-        onSubmitAdd({ title, image, description });
+        onSubmitAdd({ lat, lng, title, image, description });
       });
+  };
+
+  saveFoundedCoordinates = newPointCoordinates => {
+    console.log(newPointCoordinates.lat);
+    console.log(newPointCoordinates.lng);
+
+    this.ref.inputLat.value = newPointCoordinates.lat;
+    this.ref.inputLng.value = newPointCoordinates.lng;
+
+    console.log(this.ref.inputLat.value);
+    console.log(this.ref.inputLng.value);
   };
 
   openFormAfterSearch = () => {

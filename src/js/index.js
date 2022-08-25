@@ -33,7 +33,9 @@ function main() {
   // отказаться от Буфера. каждому шагу свой зен. передавать коордтнаты в скрытое поле формы
 
   const prepareNewPointAndNewApartmentForm = newPointCoordinates => {
-    model.initBuffer(model.getLastPointId(), newPointCoordinates);
+    form.saveFoundedCoordinates(newPointCoordinates);
+
+    // model.initBuffer(model.getLastPointId(), newPointCoordinates);
 
     form.openFormAfterSearch();
   };
@@ -46,15 +48,27 @@ function main() {
       .catch(form.showErrorSearch);
   };
 
-  const prepareNewApartment = ({ title, image, description }) => {
-    model.addApartmentToBuffer({ title, image, description });
-    model.addNewApartment(model.bufferObj);
+  const prepareNewApartment = ({ lat, lng, title, image, description }) => {
+    //model.addApartmentToBuffer({ title, image, description });
+
+    console.log(model.getLastPointId(), lat, lng, title, image, description);
+
+    model.addNewApartment(
+      model.getLastPointId(),
+      lat,
+      lng,
+      title,
+      image,
+      description
+    );
+
+    //model.addNewApartment(model.bufferObj);
 
     form.hideFormAfterSearch();
     form.hideForm();
 
     gallery.openGallery();
-    gallery.showApartments(model.getApartmentById(model.bufferObj.id));
+    gallery.showApartments(model.getApartmentById(model.getLastPointId()));
   };
 
   form.renderFormToAddNewApartment(searchOnMap, prepareNewApartment);
