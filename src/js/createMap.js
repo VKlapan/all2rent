@@ -1,8 +1,11 @@
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
 
 export function createMap(container) {
+  const ZOOM_MIDDLE_VIEW = 16;
+  const ZOOM_CLOSE_VIEW = 18;
+
   const map = new google.maps.Map(container, {
-    zoom: 16,
+    zoom: ZOOM_MIDDLE_VIEW,
     center: { lat: 50.3864813, lng: 30.4610184 },
     mapTypeControl: true,
     mapTypeControlOptions: {
@@ -36,14 +39,18 @@ export function createMap(container) {
       // убрать querySelector (document) устранить выход из контекста
       // 18 - константа зума: сделать константой с понятным именем "масштаб крупный (уменьшеный)"
 
-      marker.addListener('click', mapsMouseEvent => {
-        map.setZoom(18);
-        map.setCenter(marker.position);
+      // marker.addListener('click', mapsMouseEvent => {
+      //   map.setZoom(18);
+      //   map.setCenter(marker.position);
 
-        const ApartByClickMarketEl = document.querySelector(
-          `[data-id='${marker.label}']`
-        );
-        ApartByClickMarketEl.scrollIntoView(true);
+      //   const ApartByClickMarketEl = document.querySelector(
+      //     `[data-id='${marker.label}']`
+      //   );
+      //   ApartByClickMarketEl.scrollIntoView(true);
+      // });
+
+      marker.addListener('click', mapsMouseEvent => {
+        markerChoosen(marker.position, marker.label);
       });
 
       return marker;
@@ -54,11 +61,18 @@ export function createMap(container) {
 
   map.addListener('bounds_changed', boundsChanged);
 
-  setTimeout(() => {
-    console.log('get bounds', map.getBounds().toJSON());
-  }, 3000);
+  //TODO: разнести подписчиков по типу ивента на этапе подписки
 
-  // разносить подписчиков по типу ивента на этапе подписки
+  function markerChoosen(markerPosition, markerLabel) {
+    for (let i = 0; i < mapObservers.length; i++) {
+      if (mapObservers[i].eventName === 'click') {
+        map.setZoom(ZOOM_CLOSE_VIEW);
+        map.setCenter(markerPosition);
+
+        mapObservers[i].listener(markerLabel);
+      }
+    }
+  }
 
   function boundsChanged() {
     for (let i = 0; i < mapObservers.length; i++) {
@@ -100,20 +114,18 @@ export function createMap(container) {
 
   const zoomTo = zoom => {
     map.setCenter({ lat: 50.3864813, lng: 30.4610184 });
-    map.setZoom(16);
+    map.setZoom(ZOOM_MIDDLE_VIEW);
   };
+
   function addEventListener(eventName, listener) {
     mapObservers.push({ eventName, listener });
   }
-
-  function removeEventListener(eventName, handler) {}
 
   return {
     addPoints,
     findNewPoints,
     zoomTo,
     addEventListener,
-    removeEventListener,
   };
 }
 

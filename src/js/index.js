@@ -30,6 +30,8 @@ function main() {
 
   map.addEventListener('bounds_changed', onBoundsChange);
 
+  map.addEventListener('click', gallery.showChoosenApartment);
+
   // отказаться от Буфера. каждому шагу свой зен. передавать коордтнаты в скрытое поле формы
 
   const prepareNewApartmentForm = newPointCoordinates => {

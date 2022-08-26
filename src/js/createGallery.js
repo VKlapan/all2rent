@@ -21,6 +21,10 @@ export class Gallery {
       .join('');
   };
 
+  showChoosenApartment(id) {
+    document.querySelector(`[data-id='${id}']`).scrollIntoView(true);
+  }
+
   showApartments = apartments => {
     this.itemsGalleryEl.innerHTML = this.renderItemsGallery(apartments);
   };
