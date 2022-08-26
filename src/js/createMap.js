@@ -35,20 +35,6 @@ export function createMap(container) {
         label,
       });
 
-      // вынести колл-бек из лисенера - дать понятное имя
-      // убрать querySelector (document) устранить выход из контекста
-      // 18 - константа зума: сделать константой с понятным именем "масштаб крупный (уменьшеный)"
-
-      // marker.addListener('click', mapsMouseEvent => {
-      //   map.setZoom(18);
-      //   map.setCenter(marker.position);
-
-      //   const ApartByClickMarketEl = document.querySelector(
-      //     `[data-id='${marker.label}']`
-      //   );
-      //   ApartByClickMarketEl.scrollIntoView(true);
-      // });
-
       marker.addListener('click', mapsMouseEvent => {
         markerChoosen(marker.position, marker.label);
       });

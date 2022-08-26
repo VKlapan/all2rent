@@ -32,8 +32,6 @@ function main() {
 
   map.addEventListener('click', gallery.showChoosenApartment);
 
-  // отказаться от Буфера. каждому шагу свой зен. передавать коордтнаты в скрытое поле формы
-
   const prepareNewApartmentForm = newPointCoordinates => {
     form.saveFoundedCoordinates(newPointCoordinates);
     form.openFormAfterSearch();

@@ -75,22 +75,3 @@ header {
   overflow-x: scroll;
   scroll-behavior: smooth;
 }
-
-.item__list {
-  padding: 5px;
-}
-.item {
-  width: auto;
-  padding: 10px;
-  &__first {
-    order: -1;
-  }
-}
-
-.item__img {
-  width: 240px;
-}
-
-.item__description {
-  font-size: 12px;
-}
